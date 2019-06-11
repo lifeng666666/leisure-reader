@@ -1,4 +1,4 @@
-# other
+# 学习
 平时学习的记录
 2019/6/11
 https://www.cnblogs.com/ccblogs/p/5261292.html，多Tabs的横向滚动插件（支持Zepto和jQuery）
