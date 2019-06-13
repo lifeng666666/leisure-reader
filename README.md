@@ -65,3 +65,57 @@ $("img").on('click', function(e) {
 https://blog.csdn.net/qq_29132907/article/details/79390605
 -localStorage的黑科技-js和css缓存机制
 https://www.jb51.net/article/104745.html
+
+#zeptojs的图片懒加载 picLazyLoad.min.js
+http://ons.me/wp-content/uploads/2014/05/picLazyLoad/
+
+-JS实现图片上传多次上传同一张不生效的处理方法
+    解决办法, 在删除方法里置空input
+    $("#id").find('input').val('');
+    拿到input所在的位置, 找到这个input, 然后置空
+    还有一种方法是来回切换input的属性
+    每次删除图片后, 改变input的type属性
+    先变成text, 删除完成后变回file, 方便删除后能继续上传
+
+    $("#inputId").attr('type','text');
+    $("#inputId").attr('type','file');
+    
+ -art-template.js的{{if}}{{/if}}如何使用   
+ HTML5在移动端如何加快图片加载速率
+ -HTML5的rem布局在手机上页面先缩小在放大的bug如何解决
+    
+    --
+    /*  获取图片的base64码
+      * @param {obj}img图片dom对象
+       * */
+      function getBase64Image(img) {
+        let canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        let ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, img.width, img.height);  //绘制相同图片
+        return canvas.toDataURL("image/png"); //转换成base64数据
+      }
+    --
+    
+-H5页面在移动端触发点击事件的时候，被点击的元素会出现背景变黑，闪烁问题，体验非常差！
+解决方法如下：
+在被点击的元素设置css：
+-webkit-tap-highlight-color:transparent;
+
+图片压缩地址：
+- https://think2011.net/localResizeIMG/test/index.html，
+- https://tinypng.com/
+
+- 移动端怎么加快页面显示速度？
+1. 必要页面进行缓存
+2. 缓存改动少的资源文件
+3. 配置CDN
+4. 压缩图片，压缩代码
+5. AMD，CMD开发方式，按需加载
+
+- javascript模块化之CommonJS、AMD、CMD、UMD、ES6
+- 移动web缓存介绍 
+-  移动端网站提升页面加载性能的优化技巧 http://www.mahaixiang.cn/ydseo/1198.html
+- JS移动端实现图片上传多次上传同一张不生效的处理方法
+
