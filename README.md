@@ -1,6 +1,6 @@
 # 学习
 平时学习的记录
-2019/6/11
+# 2019/6/11
 https://www.cnblogs.com/ccblogs/p/5261292.html，多Tabs的横向滚动插件（支持Zepto和jQuery）
 ，https://www.helloweba.net/javascript/374.html，基于Zepto的内容滑动插件：zepto.hwSlider.js
 
@@ -51,7 +51,7 @@ JavaScript生成随机的验证码，pc、移动端图片上传的方法，图�
 
 -------
 
-#6/12 异步加载的几种方式学习
+# 6/12 异步加载的几种方式学习
 图片上传的方法的使用
 templatejs-->art-template.js的使用
 js数组的一些操作
@@ -61,6 +61,8 @@ $("img").on('click', function(e) {
      e.preventDefault();
 });
 ----
+
+# 6/13
 -css、js等文件缓存的添加，
 https://blog.csdn.net/qq_29132907/article/details/79390605
 -localStorage的黑科技-js和css缓存机制
@@ -119,3 +121,41 @@ http://ons.me/wp-content/uploads/2014/05/picLazyLoad/
 -  移动端网站提升页面加载性能的优化技巧 http://www.mahaixiang.cn/ydseo/1198.html
 - JS移动端实现图片上传多次上传同一张不生效的处理方法
 
+# 6/14 
+ - 将请求提取到公共部分，这部分可能经常会修改，提取更能快捷修改！
+ - 如何引用外部js文件的变量  
+ - css3、html5新特性 渐变的使用
+ - 欢迎来到php自学网 ： http://www.zixuephp.net/index.html
+ - CSS中伪类及伪元素用法详解
+ - 模板语法学习
+ - span标签中实现换行
+ --
+     span{
+        word-break:normal; 
+        width:auto; 
+        display:block; 
+        white-space:pre-wrap;
+        word-wrap : break-word ;
+        overflow: hidden ;
+    }  
+ --
+ - JavaScript的MultipartFile 上传图片
+ - zepto的fadeIn方法，在显示透明的遮罩层(如opacity: 0.5)时，会把该图层最终的opacity设置为1，这显然不符合我们的预期
+   通过css3动画transition的方式来达到显隐的效果
+   给遮罩层设置样式
+ --
+     .mask {
+         display: none;
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(0, 0, 0, .5);
+         opacity: 0;
+         transition: opacity 1s;
+     }
+ -- 
+  $('.mask').show()会渐变的显示遮罩层(不要使用fadeIn) 
+  $('.mask').fadeOut()会渐变的隐藏遮罩层
+  - JavaScript使用MultipartFile上传图片的图片如何在本地预览
