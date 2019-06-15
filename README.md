@@ -159,3 +159,150 @@ http://ons.me/wp-content/uploads/2014/05/picLazyLoad/
   $('.mask').show()会渐变的显示遮罩层(不要使用fadeIn) 
   $('.mask').fadeOut()会渐变的隐藏遮罩层
   - JavaScript使用MultipartFile上传图片的图片如何在本地预览
+  
+  # 6/15
+  - jQuery的MultipartFile上传图片
+  - 用AJAX异步提交表单上传多个文件（type=‘file‘）案例
+  - ajax使用FormData对象实现批量文件上传（前后端）
+  - JavaScript如何向对象添加属性
+  - from表单上传图片
+  - JavaScript如何把object对象存储到本地
+  - JavaScript的判断类型
+  - 请问js中得到的一个object对象该怎样保存到本地呢？
+---
+    function SaveInfoToFile(folder, fileName) {
+    var filePath = folder + fileName;
+    var fileInfo = "hahahaha";
+    var fso = new ActiveXObject("Scripting.FileSystemObject");
+    var file = fso.CreateTextFile(filePath, true);
+    file.Write(fileInfo);
+    file.Close();
+}
+ 
+仅限 IE
+---
+- javascript实现将文件保存到本地方法汇总
+---
+    <script type="text/javascript"> 
+        function saveFile(imgUrl) 
+        { 
+         var oPop=window.open(imgUrl,"","width=1, height=1, top=5000, left=5000"); 
+         for(;oPop.document.readyState != "complete"; ) 
+         { 
+          if(oPop.document.readyState=="complete")break; 
+         } 
+         oPop.document.execCommand("SaveAs"); 
+         oPop.close(); 
+        } 
+    </script> 
+    </head>
+    <body>
+        <img src="../mytest.jpg" id="theimage" border="0"> 
+        <a href="#" onclick="saveFile(document.getElementById('theimage').src)"> 点击这里下载图片 </a> 
+    </body>
+    </html>
+    
+    function SaveAs5(imgURL)
+      {
+      var Pop = window.open(imgURL,"","width=1, height=1, top=5000, left=5000");
+      for(; oPop.document.readyState != "complete"; )
+      {
+      if (oPop.document.readyState == "complete")break;
+      }
+      oPop.document.execCommand("SaveAs");
+      oPop.close();
+      }
+
+    <img src="t_screenshot_17616.jpg" id="DemoImg" border="0" onclick="SaveAs5(this.src)">
+    
+    
+    function SaveAs5(imgURL)
+      {
+      var Pop = window.open(imgURL,"","width=1, height=1, top=5000, left=5000");
+      for(; oPop.document.readyState != "complete"; )
+      {
+      if (oPop.document.readyState == "complete")break;
+      }
+      oPop.document.execCommand("SaveAs");
+      oPop.close();
+      }
+ 
+    <img src="../t_screenshot_17616.jpg" id="DemoImg" border="0"> 
+    <a href="#" onclick="SaveAs5(document.getElementById('DemoImg').src)"> 点击这里下载图片 </a> 
+
+    
+---
+----
+
+    var Type = (function() {
+                var type = {};
+                var typeArr = ['String', 'Object', 'Number', 'Array','Undefined', 'Function', 'Null', 'Symbol'];
+                for (var i = 0; i < typeArr.length; i++) {
+                    (function(name) {
+                        type['Is' + name] = function(obj) {
+                            return Object.prototype.toString.call(obj) == '[object ' + name + ']';
+                        }
+                    })(typeArr[i]);
+                }
+                return type;
+})();
+    调用：
+    Type.IsFunction(function() {})      Type.IsObject({})。。。。。
+
+----
+- javascript将base64编码的图片数据转换为file并提交
+- javaScript把项目本地的图片或者图片的绝对路径转为base64字符串、blob对象在上传  https://www.cnblogs.com/puyongsong/p/6005800.html
+
+- 对象存储
+--- 
+  function SetCookie(name, value) {
+        var key = '';
+        var Days = 2;
+        var exp = new Date();
+        var domain = "";
+        exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+        if (key == null || key == "") {
+            document.cookie = name + "=" + encodeURI(value) + ";expires=" + exp.toGMTString() + ";path=/;domain=" + domain + ";";
+        }
+        else {
+            var nameValue = GetCookie(name);
+            if (nameValue == "") {
+                document.cookie = name + "=" + key + "=" + encodeURI(value) + ";expires=" + exp.toGMTString() + ";path=/;domain=" + domain + ";";
+            }
+            else {
+                var keyValue = getCookie(name, key);
+                if (keyValue != "") {
+                    nameValue = nameValue.replace(key + "=" + keyValue, key + "=" + encodeURI(value));
+                    document.cookie = name + "=" + nameValue + ";expires=" + exp.toGMTString() + ";path=/;domain=" + domain + ";";
+                }
+                else {
+                    document.cookie = name + "=" + nameValue + "&" + key + "=" + encodeURI(value) + ";expires=" + exp.toGMTString() + ";path=/;" + domain + ";";
+                }
+            }
+        }
+    }
+ 
+    function GetCookie(name) {
+        var nameValue = "";
+        var key = "";
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if (arr = document.cookie.match(reg)) {
+            nameValue = decodeURI(arr[2]);
+        }
+        if (key != null && key != "") {
+            reg = new RegExp("(^| |&)" + key + "=([^(;|&|=)]*)(&|$)");
+            if (arr = nameValue.match(reg)) {
+                return decodeURI(arr[2]);
+            }
+            else return "";
+        }
+        else {
+            return nameValue;
+        }
+    }
+---    
+    注意：JSON.stringify()中不要忘了“i”,stringify而不是stringfy！ 
+    然后取出person的对象你可以用JSON.parse(); 
+    person = JSON.parse(localStorage.getItem(“person”));
+
+- js 如何把input的file图片对象如何存储到本地
