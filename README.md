@@ -319,3 +319,8 @@ http://ons.me/wp-content/uploads/2014/05/picLazyLoad/
  - 移动web缓存介绍 http://caibaojian.com/mobile-cache.html
  - 利用HTML5的history.replacestate()修改当前页面的URL
  - JavaScript移动端html的zeptojs懒加载图片 http://ons.me/484.html
+ - javascript如何去除跳转的历史记录
+ - javascript:window.history.forward(1) JS清除网页历史记录，屏蔽后退按钮
+ - 会在window.history新增一条历史记录，如果想清除掉这条记录（不清除的话点击返回会回到上一个hash值的页面），可以使用
+window.location.replace(window.location.href.toString().replace(window.location.hash, '')+"#"+"hash的值")
+  - JS(javascript)跳转阻止后退到上个页面，没有历史记录  js的window.location.replace('要转向的页面')，这样不会有历史记录
