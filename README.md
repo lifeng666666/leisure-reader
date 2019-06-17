@@ -306,3 +306,16 @@ http://ons.me/wp-content/uploads/2014/05/picLazyLoad/
     person = JSON.parse(localStorage.getItem(“person”));
 
 - js 如何把input的file图片对象如何存储到本地
+
+# 6.17
+ - JavaScript的移动端input file点击不能选择图片是什么问题？
+ - 移动端H5页面阻止图片和文字被选中
+ - 上传图片：https://www.cnblogs.com/hehuiself/p/7099861.html
+ - 移动端的坑 https://www.cnblogs.com/baihuaxiu/p/6654496.html
+ - JS监听浏览器的返回、后退、上一页按钮的事件方法
+ - JavaScript移动端去除历史页面
+ - 移动端H5页面跳转重定向
+ - JavaScript移动端html文件如何缓存
+ - 移动web缓存介绍 http://caibaojian.com/mobile-cache.html
+ - 利用HTML5的history.replacestate()修改当前页面的URL
+ - JavaScript移动端html的zeptojs懒加载图片 http://ons.me/484.html
