@@ -324,3 +324,60 @@ http://ons.me/wp-content/uploads/2014/05/picLazyLoad/
  - 会在window.history新增一条历史记录，如果想清除掉这条记录（不清除的话点击返回会回到上一个hash值的页面），可以使用
 window.location.replace(window.location.href.toString().replace(window.location.hash, '')+"#"+"hash的值")
   - JS(javascript)跳转阻止后退到上个页面，没有历史记录  js的window.location.replace('要转向的页面')，这样不会有历史记录
+  
+# 6.18 
+- 显示图片的两种方法：
+---  
+    <input type="file" id="FileTypeIcon">
+           <img src="" class="img" />
+
+    $("#FileTypeIcon").live('change', function () {
+           var file = this.files[0];//获取文件信息
+            if (window.FileReader)
+            {
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                //监听文件读取结束后事件    
+                reader.onloadend = function (e) {
+                    $(".img").attr("src",e.target.result);
+                };
+            }
+    ｝
+    
+    <input type="file" id="FileTypeIcon">
+       <img src="" class="img" />
+    $("#FileTypeIcon").live('change', function () {
+ 
+        var objurl = getObjectURL(this.files[0]);
+        function getObjectURL(file)
+        {
+            var url = "";
+            if(window.createObjectURL!=undefined)
+            {
+                url = window.createObjectURL(file);
+            }
+           else if(window.URL!=undefined)
+            {
+               url = window.URL.createObjectURL(file);
+           }
+           else if (window.webkitURL != undefined)
+           {
+               url = window.webkitURL.createObjectURL(file);
+           }
+            return url;
+        }
+        $(".img").attr("src", objurl);
+    ｝
+
+ ---
+ 
+ 
+ - JavaScript移动端获取本地图片文件路径地址、绝对路径
+ - https://blog.csdn.net/u011500781/article/details/52301886 前端构建工具gulp的使用教程集合
+ - JavaScript的移动端在跳动频繁的页面如何缓存处理
+ - 移动端进入页面每一项如何缓存在本地 
+ - 前端的页面缓存处理：https://www.cnblogs.com/xpbb/archive/2012/09/15/2685916.html
+ - 常见的前端问题https://www.cnblogs.com/LiuJL/p/7744473.html
+ - 进入页面如何缓存本地 JavaScript进入页面如何缓存本地 https://www.cnblogs.com/lancee/archive/2012/01/04/2312282.html
+ 
+
