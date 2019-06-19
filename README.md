@@ -381,3 +381,18 @@ window.location.replace(window.location.href.toString().replace(window.location.
  - 进入页面如何缓存本地 JavaScript进入页面如何缓存本地 https://www.cnblogs.com/lancee/archive/2012/01/04/2312282.html
  
 
+#  6/19
+- 移动端常用alert、confirm、toast等弹窗插件，兼容 jQueryZepto
+- 完美身份证正则表达式
+- 限制HTML的input只能输入数字、英文、汉字...
+- JavaScript如何监听后退的事件？
+- 原js监听浏览器后退事件
+- JavaScript关闭页面 https://www.cnblogs.com/chuhj/p/7131759.html
+- js点击返回跳转到指定页面实现过程
+- JavaScript如何重定向页面
+- 上传图片 http://www.lifeng666.top/webapp/shangchuang.html
+- 移动端图片上传预览，如何使图片横向摆放
+- https://blog.csdn.net/hsany330/article/details/52471522 exif.js插件的使用
+- 移动端图片上传旋转、压缩问题的方法
+- 移动端上传照片 预览（解决iOS等设备照片旋转90度的bug）
+- https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader
