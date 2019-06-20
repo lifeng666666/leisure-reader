@@ -14,3 +14,34 @@
  - 移动端使用localStorage缓存Js和css文的方法(web开发)
  - h5缓存---application应用 h5缓存 /HTML5应用程序缓存Application Cache
  - app嵌入的H5页面的数据埋点总结
+ - js监听返回事件 原理：在页面中我们可以使用javascript window history，后退到前面页面，但是由于安全原因javascript不允许修改history里已有的url链接，但可以使用pushState方法往history里增加url链接，并且提供popstate事件监测从history栈里弹出url。既然有提供popstate事件监测，那么我们就可以进行监听
+----
+  $(function(){
+        pushHistory();
+        window.addEventListener("popstate", function(e) {
+            alert("我监听到了浏览器的返回按钮事件啦");//根据自己的需求实现自己的功能
+        }, false);
+        function pushHistory() {
+            var state = {
+                title: "title",
+                url: "#"
+            };
+            window.history.pushState(state, "title", "#");
+        }
+    });
+    
+    if(window.history && window.history.pushState) {
+      $(window).on('popstate', function() {
+       var hashLocation = location.hash;
+       var hashSplit = hashLocation.split("#!/");
+       var hashName = hashSplit[1];
+       if(hashName !== '') {
+        var hash = window.location.hash;
+        if(hash === '') {
+         alert("你点击了返回键");
+        }
+       }
+      });
+      window.history.pushState('forward', null, './#forward');
+     }
+ ---   
