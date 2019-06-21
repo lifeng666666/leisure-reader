@@ -46,3 +46,11 @@
       window.history.pushState('forward', null, './#forward');
      }
  ---   
+ 
+ # 6/21
+ - 安卓手机的弹出输入框的bug解决办法？
+ - 缓存处理的方法
+ - 监听关闭页面事件等
+ - 学会用vue做H5爷儿们项目等
+ - 好好学习吧兄弟！
+ 
