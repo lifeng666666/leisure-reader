@@ -67,4 +67,27 @@
    
    ---
   
+  - iscrolljs库，下拉刷新、懒加载等
+    hammerjs
+    
+    ---
+         click = touchstart+touchend
+    ---
   
+  - 原生的websocket
+  
+  - es6学习： 可以在这   http://jspang.com/posts/2019/01/20/es6.html 学习es6呢！！！ google已经支持ES6了， 有些低版本的浏览器还是不支持ES6的语法  Webpack自动编译
+    1、使用Babel把ES6编译成ES5 （可以吧npm--》cnpm，速度更快些）
+    
+    2、npm init -y 一个项目 ‘-y’是省去了回车确定东西
+    
+    3、npm install -g babel-cli  安装babel转换的脚手架工具
+    
+    4、babel src/index.js -o dist/index.js 将文件要编译的文件编译到指定的文件  虽然已经编译了，但还是不能编译成es5语法，还要下载插件
+    
+    5、npm install --save-dev babel-preset-es2015 babel-cli 
+    
+    6、babel src/index.js -o dist/index.js 这就可以运行把es6语法转es5
+    
+    7、我们可以把 babel src/index.js -o dist/index.js 这运行做成webpack一样，将"build":"babel src/index.js -o dist/index.js"加入到package.js文件的script中，在运行转es5就可以直接以cnpm run build了
+   
