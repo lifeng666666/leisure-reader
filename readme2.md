@@ -61,9 +61,9 @@
   
   ---
   
-   屏幕大小   字体               html的fontSize               
-   320px     14px                   32px               14/32=0.4375rem                14px
-   460px     20.125px               46px               20.125/46=0.4375rem            20.125px
+    屏幕大小   字体               html的fontSize               
+    320px     14px                   32px               14/32=0.4375rem                14px
+    460px     20.125px               46px               20.125/46=0.4375rem            20.125px
    
    ---
   
