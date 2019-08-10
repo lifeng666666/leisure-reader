@@ -1,7 +1,6 @@
 ### javascript 监听对象属性的变化
 - 首先我们需要知道如何通过Object.defineProperty这个API来监听一个对象的变化, 注意注释里的内容!
---- 
-
+``` javascript
  var temperature = undefined;
  Object.defineProperty(obj, 'temperature', {
     get: function() {
@@ -11,11 +10,10 @@
       temperature = value;
     }
   });
-  
----
+```  
 - 当我们执行 obj.temperature =XX时，set函数就会自动调用，这为我们执行回调函数提供了契机。
 - 2、
---- 
+``` javascript
 var obj = {
 	watch:function(pro,callback){
 		if(pro in this){
@@ -50,4 +48,4 @@ obj.watch("a",function(n,o,_this){
 	console.log("new val = " + n 
 			+"old val = " + o + " this is : " + (_this ));});
 obj.a = 4;
----
+```
