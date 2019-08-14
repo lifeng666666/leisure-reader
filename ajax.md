@@ -517,6 +517,15 @@ function getCookie(cname) {
 function deleteCookie(cname) {
     document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 }
-
-   
+// 创建cookie
+        setCookie('username', 'sleepwalker');
+        setCookie('password', '123', 60 * 1000);
+        // 读取cookie
+        var username = getCookie('username');
+        var password = getCookie('password');
+        console.log(username);
+        console.log(password);
+        // 删除 cookie
+        deleteCookie('username');
+        deleteCookie('password');
 ```
