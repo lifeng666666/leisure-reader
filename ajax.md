@@ -373,3 +373,150 @@ d. 付费给搜索引擎
 e. 链接交换和链接广泛度（Link Popularity）
 
 f. 合理的标签使用
+
+``` javascript
+   
+   function lfAjax(config, callbackS, callbackF) {
+    var url = config.url || '/';
+    var method = config.method || 'GET';
+    var async = config.async === undefined ? true : config.async;
+    var contentType = config.contentType || 'application/x-www-form-urlencoded';
+    var header = config.header || {};
+    var data = config.data;
+    // 创建XMLHttpRequest对象
+    var xhr = new XMLHttpRequest();
+    // 初始化请求
+    xhr.open(method, url, async);
+    // 设置header的默认值
+    // xhr.setRequestHeader('Content-Type', value);
+    // 设置其它header
+    for (var item in header) {
+        console.log(item, header[item]);
+        xhr.setRequestHeader(item, header[item]);
+        // 发送请求
+
+        xhr.send(data);
+        // 处理响应
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    callbackS && callbackS(xhr.responseText);
+                } else { callbackF && callbackF(xhr.status); }
+            }
+        }
+    }
+}
+//银行卡号校验
+//Description: 银行卡号Luhm校验
+//Luhm校验规则：16位银行卡号（19位通用）:
+// 1.将未带校验位的 15（或18）位卡号从右依次编号 1 到 15（18），位于奇数位号上的数字乘以 2。
+// 2.将奇位乘积的个十位全部相加，再加上所有偶数位上的数字。
+// 3.将加法和加上校验位能被 10 整除。
+function luhmCheck(bankno) {
+
+    var num = /^\d*$/; //全数字
+    if (!num.exec(bankno)) {
+        //$("#banknoInfo").html("银行卡号必须全为数字");
+        return false;
+    }
+    //开头6位
+    var strBin = "10,18,30,35,37,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,58,60,62,65,68,69,84,87,88,94,95,98,99";
+    if (strBin.indexOf(bankno.substring(0, 2)) == -1) {
+        //$("#banknoInfo").html("银行卡号开头6位不符合规范");
+        return false;
+    }
+    var lastNum = bankno.substr(bankno.length - 1, 1); //取出最后一位（与luhm进行比较）
+    var first15Num = bankno.substr(0, bankno.length - 1); //前15或18位
+    var newArr = new Array();
+    for (var i = first15Num.length - 1; i > -1; i--) { //前15或18位倒序存进数组
+        newArr.push(first15Num.substr(i, 1));
+    }
+    var arrJiShu = new Array(); //奇数位*2的积 <9
+    var arrJiShu2 = new Array(); //奇数位*2的积 >9
+    var arrOuShu = new Array(); //偶数位数组
+    for (var j = 0; j < newArr.length; j++) {
+        if ((j + 1) % 2 == 1) { //奇数位
+            if (parseInt(newArr[j]) * 2 < 9) {
+                arrJiShu.push(parseInt(newArr[j]) * 2);
+            } else {
+                arrJiShu2.push(parseInt(newArr[j]) * 2);
+            }
+        } else { //偶数位
+            arrOuShu.push(newArr[j]);
+        }
+    }
+    var jishu_child1 = new Array(); //奇数位*2 >9 的分割之后的数组个位数
+    var jishu_child2 = new Array(); //奇数位*2 >9 的分割之后的数组十位数
+    for (var h = 0; h < arrJiShu2.length; h++) {
+        jishu_child1.push(parseInt(arrJiShu2[h]) % 10);
+        jishu_child2.push(parseInt(arrJiShu2[h]) / 10);
+    }
+    var sumJiShu = 0; //奇数位*2 < 9 的数组之和
+    var sumOuShu = 0; //偶数位数组之和
+    var sumJiShuChild1 = 0; //奇数位*2 >9 的分割之后的数组个位数之和
+    var sumJiShuChild2 = 0; //奇数位*2 >9 的分割之后的数组十位数之和
+    var sumTotal = 0;
+    for (var m = 0; m < arrJiShu.length; m++) {
+        sumJiShu = sumJiShu + parseInt(arrJiShu[m]);
+    }
+    for (var n = 0; n < arrOuShu.length; n++) {
+        sumOuShu = sumOuShu + parseInt(arrOuShu[n]);
+    }
+    for (var p = 0; p < jishu_child1.length; p++) {
+        sumJiShuChild1 = sumJiShuChild1 + parseInt(jishu_child1[p]);
+        sumJiShuChild2 = sumJiShuChild2 + parseInt(jishu_child2[p]);
+    }
+    //计算总和
+    sumTotal = parseInt(sumJiShu) + parseInt(sumOuShu) + parseInt(sumJiShuChild1) + parseInt(sumJiShuChild2);
+    //计算Luhm值
+    var k = parseInt(sumTotal) % 10 == 0 ? 10 : parseInt(sumTotal) % 10;
+    var luhm = 10 - k;
+    if (lastNum == luhm) {
+        //$("#banknoInfo").html("Luhm验证通过");
+        return true;
+    } else {
+        //$("#banknoInfo").html("银行卡号必须符合Luhm校验");
+        return false;
+    }
+    if (bankno.length < 15 && bankno.length > 20) {
+        //$("#banknoInfo").html("银行卡号长度必须在16到19之间");
+        return false;
+    }
+}
+
+// 创建并存储cookie
+function setCookie(cname, cvalue, expiredays) {
+    var exdate = new Date();
+    exdate.setTime(exdate.getTime() + expiredays);
+    var cookieItem = cname + "=" + cvalue + (expiredays ? "; expires=" + exdate.toGMTString() : "");
+    document.cookie = cookieItem;
+}
+
+// 获取cookie
+function getCookie(cname) {
+    if (document.cookie.length > 0) {
+        var name = cname + "=";
+        // split() 方法用于把一个字符串分割成字符串数组。
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            // trim() 方法用于去除字符串两端的空白字符
+            var c = ca[i].trim();
+            // indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。
+            // 如果要检索的字符串值没有出现，则该方法返回 -1。
+            if (c.indexOf(name) == 0) {
+                // substring() 方法用于提取字符串中介于两个指定下标之间的字符。
+                var cookieItem = c.substring(name.length, c.length);
+                return cookieItem;
+            }
+        }
+    }
+    return ""
+}
+
+// 删除cookie
+function deleteCookie(cname) {
+    document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+}
+
+   
+```
