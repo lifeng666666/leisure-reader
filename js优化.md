@@ -52,3 +52,9 @@ js相关
 将多次改变样式属性的操作合并成一次性操作
 懒加载
 懒加载就是将不关键的资源延后加载。懒加载的原理是只加载自定义区域（通常是可视区域或即将进入可视区域）内需要加载的东西。
+
+* 移动端的禁止长按复制功能
+* JavaScript的代码优化
+* 百度网盘的计算机相关书籍： 链接:https://pan.baidu.com/s/1QhlDSMrhS4b0JKwGuf67ag  密码:c4rs
+* [JavaScript奇技淫巧, 代码优化, 代码整理收藏, 干货!](https://blog.csdn.net/lyt_angularjs/article/details/80530786)
+* [Javascript性能优化（一） - 基本性能优化](https://blog.csdn.net/qq_22230511/article/details/77447412)
