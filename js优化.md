@@ -58,3 +58,15 @@ js相关
 * 百度网盘的计算机相关书籍： 链接:https://pan.baidu.com/s/1QhlDSMrhS4b0JKwGuf67ag  密码:c4rs
 * [JavaScript奇技淫巧, 代码优化, 代码整理收藏, 干货!](https://blog.csdn.net/lyt_angularjs/article/details/80530786)
 * [Javascript性能优化（一） - 基本性能优化](https://blog.csdn.net/qq_22230511/article/details/77447412)
+* [JavaScript奇技淫巧, 代码优化, 代码整理收藏, 干货!](https://blog.csdn.net/lyt_angularjs/article/details/80530786#JSON_243)
+* 清空数组的快速做法
+``` javascript
+ var array = [1,2,3,4,5];
+ array = [];
+ array.splice(0,array.length);
+ array.length = 0;
+```
+* [APP分享到微信的流程（以及二次分享样式问题）](https://blog.csdn.net/LYL_520/article/details/80078083)
+* [css的背景渐变颜色调试，阴影调试样式等，好用的网站](https://www.html.cn/tool/css3Preview/Linear-Gradients.html)
+
+
